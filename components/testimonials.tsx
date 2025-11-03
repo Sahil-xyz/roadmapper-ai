@@ -5,19 +5,22 @@ const testimonials = [
   {
     name: "Sarah Chen",
     role: "Product Manager at TechCorp",
-    content: "Roadmapper AI cut our planning time in half. What used to take days now takes minutes.",
+    content:
+      "Roadmapper AI cut our planning time in half. What used to take days now takes minutes.",
     rating: 5,
   },
   {
     name: "Marcus Johnson",
     role: "Founder at StartupXYZ",
-    content: "The AI suggestions are incredibly insightful. It helped us identify gaps we would have missed.",
+    content:
+      "The AI suggestions are incredibly insightful. It helped us identify gaps we would have missed.",
     rating: 5,
   },
   {
     name: "Emily Rodriguez",
     role: "Head of Product at InnovateCo",
-    content: "Our team loves the collaboration features. Sharing and iterating on roadmaps is seamless.",
+    content:
+      "Our team loves the collaboration features. Sharing and iterating on roadmaps is seamless.",
     rating: 5,
   },
 ]
@@ -31,7 +34,9 @@ export function Testimonials() {
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-balance">Loved by Product Teams</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-balance">
+            Loved by Product Teams
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             See what industry leaders are saying about Roadmapper AI.
           </p>
@@ -49,7 +54,9 @@ export function Testimonials() {
               </div>
 
               {/* Content */}
-              <p className="text-foreground mb-6 leading-relaxed">"{testimonial.content}"</p>
+              <p className="text-foreground mb-6 leading-relaxed">
+                &quot;{testimonial.content}&quot;
+              </p>
 
               {/* Author */}
               <div>
