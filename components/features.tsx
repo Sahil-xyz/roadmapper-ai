@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Zap, Brain, BarChart3, Users, Lock, ZapIcon } from "lucide-react"
+import { MagicCard } from "./ui/magic-card"
 
 const features = [
   {
@@ -56,6 +57,7 @@ export function Features() {
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
+              <MagicCard>
               <Card key={index} className="p-6 border-border/50 bg-card/50 hover:bg-card/80 transition-colors group">
                 <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
                   <Icon size={24} className="text-primary" />
@@ -63,6 +65,7 @@ export function Features() {
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground text-sm">{feature.description}</p>
               </Card>
+              </MagicCard>
             )
           })}
         </div>

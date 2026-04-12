@@ -26,14 +26,14 @@ export function Header() {
           <Link href="/" className="text-sm text-foreground/70 hover:text-foreground transition">
             HOME
           </Link>
+          <Link href="/roadmap/create" className="text-sm text-foreground/70 hover:text-foreground transition">
+            CREATE
+          </Link>
           <Link href="/roadmap/generate" className="text-sm text-foreground/70 hover:text-foreground transition">
-            GENERATE
+            AI GENERATE
           </Link>
           <Link href="/roadmap/display" className="text-sm text-foreground/70 hover:text-foreground transition">
             ROADMAPS
-          </Link>
-          <Link href="/about" className="text-sm text-foreground/70 hover:text-foreground transition">
-            ABOUT
           </Link>
         </div>
 
@@ -93,14 +93,14 @@ export function Header() {
             <Link href="/" className="block text-sm text-foreground/70 hover:text-foreground">
               HOME
             </Link>
-            <Link href="/generate" className="block text-sm text-foreground/70 hover:text-foreground">
-              GENERATE
+            <Link href="/roadmap/create" className="block text-sm text-foreground/70 hover:text-foreground">
+              CREATE
             </Link>
-            <Link href="/roadmap" className="block text-sm text-foreground/70 hover:text-foreground">
+            <Link href="/roadmap/generate" className="block text-sm text-foreground/70 hover:text-foreground">
+              AI GENERATE
+            </Link>
+            <Link href="/roadmap/display" className="block text-sm text-foreground/70 hover:text-foreground">
               ROADMAPS
-            </Link>
-            <Link href="/about" className="block text-sm text-foreground/70 hover:text-foreground">
-              ABOUT
             </Link>
             <div className="flex gap-2 pt-2">
               {

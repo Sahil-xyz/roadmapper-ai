@@ -124,7 +124,7 @@ export default function RoadmapDetailPage() {
         <Header />
         <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
           <p className="text-lg text-destructive mb-6">{error || "Roadmap not found"}</p>
-          <Link href="/roadmaps">
+          <Link href="/roadmap/display">
             <Button variant="outline">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Roadmaps
@@ -151,7 +151,7 @@ export default function RoadmapDetailPage() {
       {/* Back Button & Hero Header */}
       <section className="relative pt-20 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <Link href="/roadmaps">
+          <Link href="/roadmap/display">
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground mb-8">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Roadmaps

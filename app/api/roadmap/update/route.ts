@@ -1,3 +1,6 @@
+// This will save the updated roadmap 
+
+
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { auth } from "@clerk/nextjs/server"
@@ -5,13 +8,13 @@ import { auth } from "@clerk/nextjs/server"
 export async function POST(req: Request) {
   try {
     const { userId: clerkId } = await auth()
+
     if (!clerkId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const { id, stages } = await req.json()
+    const { id, title, goal, stages } = await req.json()
 
-    // Find DB user by Clerk ID
     const user = await prisma.user.findUnique({
       where: { clerkId },
     })
@@ -20,28 +23,30 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
 
-    // Check roadmap ownership
     const roadmap = await prisma.roadmap.findUnique({
       where: { id },
     })
 
     if (!roadmap || roadmap.userId !== user.id) {
-      return NextResponse.json({ error: "Roadmap not found" }, { status: 404 })
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
     }
 
-    // Update roadmap progress
     const updated = await prisma.roadmap.update({
       where: { id },
-      data: { stages },
+      data: {
+        title,
+        goal,
+        stages,
+      },
     })
 
     return NextResponse.json(updated)
   } catch (error) {
-    console.error("Error updating progress:", error)
+    console.error(error)
+
     return NextResponse.json(
-      { error: "Failed to update roadmap progress" },
+      { error: "Failed to update roadmap" },
       { status: 500 }
     )
   }
 }
-

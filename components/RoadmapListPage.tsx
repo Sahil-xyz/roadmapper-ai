@@ -42,6 +42,20 @@ export default function RoadmapListPage() {
     fetchRoadmaps();
   }, [isSignedIn]);
 
+  async function deleteRoadmap(id: string) {
+    try {
+      const res = await fetch(`/api/roadmap/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) throw new Error();
+
+      setRoadmaps((prev) => prev.filter((r) => r.id !== id));
+    } catch (err) {
+      console.error("Delete failed", err);
+    }
+  }
+
   // ✅ After all hooks are defined, render conditionally
   if (!isSignedIn) {
     return (
@@ -63,7 +77,9 @@ export default function RoadmapListPage() {
     return (
       <div className="flex justify-center items-center py-20">
         <Loader2 className="animate-spin text-primary w-8 h-8" />
-        <span className="ml-3 text-muted-foreground">Fetching your roadmaps...</span>
+        <span className="ml-3 text-muted-foreground">
+          Fetching your roadmaps...
+        </span>
       </div>
     );
   }
@@ -107,7 +123,8 @@ export default function RoadmapListPage() {
           </h1>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            All your AI-generated learning and project roadmaps — organized in one place.
+            All your AI-generated learning and project roadmaps — organized in
+            one place.
           </p>
         </motion.div>
       </section>
@@ -128,10 +145,12 @@ export default function RoadmapListPage() {
                 <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                   {roadmap.title}
                 </h2>
-                <p className="text-muted-foreground text-sm line-clamp-3 mb-6">{roadmap.goal}</p>
+                <p className="text-muted-foreground text-sm line-clamp-3 mb-6">
+                  {roadmap.goal}
+                </p>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <p className="text-xs text-muted-foreground">
                   {new Date(roadmap.createdAt).toLocaleDateString("en-US", {
                     month: "short",
@@ -140,11 +159,27 @@ export default function RoadmapListPage() {
                   })}
                 </p>
                 <Link href={`/roadmap/${roadmap.id}`}>
-                  <Button variant="ghost" size="sm" className="text-primary group-hover:translate-x-1 transition-all">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-primary group-hover:translate-x-1 transition-all"
+                  >
                     View
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
+                <Link href={`/roadmap/edit/${roadmap.id}`}>
+                  <Button variant="outline" size="sm">
+                    Edit
+                  </Button>
+                </Link>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => deleteRoadmap(roadmap.id)}
+                >
+                  Delete
+                </Button>
               </div>
             </motion.div>
           ))}

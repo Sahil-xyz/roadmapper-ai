@@ -19,8 +19,8 @@ const steps = [
   },
   {
     number: "04",
-    title: "Share & Collaborate",
-    description: "Share with your team, gather feedback, and iterate together.",
+    title: "Edit & Track Progress",
+    description: "Easily update your roadmap and track progress as your skills evolves.",
   },
 ]
 
