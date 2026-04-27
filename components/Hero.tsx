@@ -28,10 +28,7 @@ export function Hero() {
       <div className="mx-auto max-w-4xl">
         {/* Badge */}
         <div className="flex justify-center mb-8 mt-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
-            <Sparkles size={16} className="text-primary" />
-            <span className="text-sm text-primary">Powered by Advanced AI</span>
-          </div>
+          
         </div>
 
         {/* Main Heading */}
